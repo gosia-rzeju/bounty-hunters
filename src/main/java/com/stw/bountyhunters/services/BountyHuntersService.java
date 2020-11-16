@@ -1,8 +1,10 @@
 package com.stw.bountyhunters.services;
 
-public interface BountyHuntersService extends CrudService {
+import com.stw.bountyhunters.model.BountyHunter;
 
-    getByLogin(String login);
+public interface BountyHuntersService extends CrudService<BountyHunter, Long> {
 
-    getByName(String name);
+    BountyHunter getByLogin(String login);
+
+    BountyHunter getByName(String name);
 }
