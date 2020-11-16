@@ -1,6 +1,7 @@
 package com.stw.bountyhunters.map;
 
 import com.stw.bountyhunters.model.BaseEntity;
+import com.stw.bountyhunters.model.BountyHunter;
 
 import java.util.*;
 
@@ -34,6 +35,10 @@ public class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
     void deleteById(ID id) {
         map.remove(id);
+    }
+
+    public T getByName(String name) {
+        return map.values().stream().filter(entry -> entry.getName().equals(name)).findFirst().orElseThrow();
     }
 
     private Long getNextId() {

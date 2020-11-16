@@ -38,7 +38,7 @@ public class BountyHunterServiceMap extends AbstractMapService<BountyHunter, Lon
 
     @Override
     public BountyHunter getByName(String name) {
-        return map.values().stream().filter(entry -> entry.getName().equals(name)).findFirst().orElseThrow();
+        return super.getByName(name);
     }
 
 }
