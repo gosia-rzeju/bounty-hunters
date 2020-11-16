@@ -6,8 +6,10 @@ import java.util.Set;
 
 public class BountyHunter extends BaseEntity {
 
-    private String email;
+
+    private String login;
     private String password;
+    private String email;
     private Long power;
     private BountyHunterType type;
     private Double factor;
@@ -19,12 +21,12 @@ public class BountyHunter extends BaseEntity {
     public BountyHunter() {
     }
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -33,6 +35,14 @@ public class BountyHunter extends BaseEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Long getPower() {
