@@ -2,6 +2,7 @@ package com.stw.bountyhunters.model;
 
 import com.stw.bountyhunters.model.enums.BountyHunterType;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class BountyHunter extends BaseEntity {
@@ -15,7 +16,7 @@ public class BountyHunter extends BaseEntity {
     private Double factor;
     private Long money;
     private Byte[] image;
-    private Set<Item> ownedItems;
+    private Set<Item> ownedItems = new HashSet<>();
     private Set<Item> usedItems;
 
     public BountyHunter() {

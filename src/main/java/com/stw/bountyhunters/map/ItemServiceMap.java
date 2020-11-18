@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class ItemServiceMap extends AbstractMapService <Item, Long> implements ItemService {
+
     @Override
     public Set<Item> findAll() {
         return super.findAll();
