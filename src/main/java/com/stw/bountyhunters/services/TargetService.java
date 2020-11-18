@@ -8,6 +8,6 @@ import java.util.Set;
 
 public interface TargetService extends CrudService<Target, Long> {
 
-    Set<Item> getByType(TargetType type);
+    Set<Target> getByType(TargetType type);
 
 }

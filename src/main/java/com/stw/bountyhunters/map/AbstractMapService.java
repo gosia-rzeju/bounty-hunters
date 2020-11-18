@@ -5,7 +5,7 @@ import com.stw.bountyhunters.model.BountyHunter;
 
 import java.util.*;
 
-public class AbstractMapService<T extends BaseEntity, ID extends Long> {
+public abstract class  AbstractMapService<T extends BaseEntity, ID extends Long> {
 
     protected Map<Long, T> map = new HashMap<>();
 
@@ -38,7 +38,7 @@ public class AbstractMapService<T extends BaseEntity, ID extends Long> {
     }
 
     public T getByName(String name) {
-        return map.values().stream().filter(entry -> entry.getName().equals(name)).findFirst().orElseThrow();
+        return map.values().stream().filter(value -> value.getName().equals(name)).findFirst().orElseThrow();
     }
 
     private Long getNextId() {

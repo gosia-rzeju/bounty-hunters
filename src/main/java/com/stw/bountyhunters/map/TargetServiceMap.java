@@ -6,6 +6,7 @@ import com.stw.bountyhunters.model.enums.TargetType;
 import com.stw.bountyhunters.services.TargetService;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class TargetServiceMap extends  AbstractMapService<Target, Long> implements TargetService {
     @Override
@@ -34,7 +35,8 @@ public class TargetServiceMap extends  AbstractMapService<Target, Long> implemen
     }
 
     @Override
-    public Set<Item> getByType(TargetType type) {
-        return null;
+    public Set<Target> getByType(TargetType type) {
+
+        return map.values().stream().filter(value -> value.getType().equals(type)).collect(Collectors.toSet());
     }
 }

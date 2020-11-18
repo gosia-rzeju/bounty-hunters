@@ -6,6 +6,7 @@ import com.stw.bountyhunters.services.BountyHuntersService;
 import java.util.Set;
 
 public class BountyHunterServiceMap extends AbstractMapService<BountyHunter, Long> implements BountyHuntersService {
+
     @Override
     public Set<BountyHunter> findAll() {
         return super.findAll();
