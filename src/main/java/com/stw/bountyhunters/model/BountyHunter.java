@@ -14,7 +14,7 @@ public class BountyHunter extends BaseEntity {
     private BountyHunterType type;
     private Double factor;
     private Long money;
-    private byte[] image;
+    private Byte[] image;
     private Set<Item> ownedItems;
     private Set<Item> usedItems;
 
@@ -77,11 +77,11 @@ public class BountyHunter extends BaseEntity {
         this.money = money;
     }
 
-    public byte[] getImage() {
+    public Byte[] getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(Byte[] image) {
         this.image = image;
     }
 

@@ -1,13 +1,14 @@
 package com.stw.bountyhunters.map;
 
-import com.stw.bountyhunters.model.Item;
 import com.stw.bountyhunters.model.Target;
 import com.stw.bountyhunters.model.enums.TargetType;
 import com.stw.bountyhunters.services.TargetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class TargetServiceMap extends  AbstractMapService<Target, Long> implements TargetService {
     @Override
     public Set<Target> findAll() {
@@ -36,7 +37,6 @@ public class TargetServiceMap extends  AbstractMapService<Target, Long> implemen
 
     @Override
     public Set<Target> getByType(TargetType type) {
-
         return map.values().stream().filter(value -> value.getType().equals(type)).collect(Collectors.toSet());
     }
 }

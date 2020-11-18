@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+
+
+
+</head>
+<body>
+
+    <h1 th:text="'Welcome to Bounty Hunters'">Welcome to Bounty Hunter</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Login</th>
+            <th>Email</th>
+            <th>Power</th>
+            <th>Money</th>
+        </tr>
+        </thead>
+        <tr th:each="hunter:${hunters}">
+            <td th:text="${hunter.login}">Login</td>
+            <td th:text="${hunter.email}">login@gmail.com</td>
+            <td th:text="${hunter.power}">999</td>
+            <td th:text="${hunter.money}">171717</td>
+        </tr>
+    </table>
+
+</body>
+</html>

@@ -2,9 +2,11 @@ package com.stw.bountyhunters.map;
 
 import com.stw.bountyhunters.model.BountyHunter;
 import com.stw.bountyhunters.services.BountyHuntersService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class BountyHunterServiceMap extends AbstractMapService<BountyHunter, Long> implements BountyHuntersService {
 
     @Override

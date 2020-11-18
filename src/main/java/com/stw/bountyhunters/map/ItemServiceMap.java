@@ -3,10 +3,12 @@ package com.stw.bountyhunters.map;
 import com.stw.bountyhunters.model.Item;
 import com.stw.bountyhunters.model.enums.ItemType;
 import com.stw.bountyhunters.services.ItemService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class ItemServiceMap extends AbstractMapService <Item, Long> implements ItemService {
     @Override
     public Set<Item> findAll() {

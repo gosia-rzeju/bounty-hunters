@@ -10,7 +10,7 @@ public class Target extends BaseEntity {
     private Long bounty;
     private TargetType type;
     private Set<Item> bountyItem;
-    private byte[] image;
+    private Byte[] image;
 
 
     public Target() {
@@ -48,11 +48,11 @@ public class Target extends BaseEntity {
         this.bountyItem = bountyItem;
     }
 
-    public byte[] getImage() {
+    public Byte[] getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(Byte[] image) {
         this.image = image;
     }
 }
