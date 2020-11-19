@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Targets List</title>
+</head>
+<body>
+
+<h1 th:text="'Targets List'">Welcome to Targets List</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Power</th>
+        <th>Bounty</th>
+    </tr>
+    </thead>
+    <tr th:each="target:${targetsList}">
+        <td th:text="${target.name}"></td>
+        <td th:text="${target.power}"></td>
+        <td th:text="${target.bounty}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
