@@ -13,12 +13,10 @@ import java.util.Set;
 public class BountyHunterServiceMap extends AbstractMapService<BountyHunter, Long> implements BountyHuntersService {
 
     private final ItemService itemService;
-    private final BountyHuntersService bountyHuntersService;
 
     @Autowired
-    public BountyHunterServiceMap(ItemService itemService, BountyHuntersService bountyHuntersService) {
+    public BountyHunterServiceMap(ItemService itemService) {
         this.itemService = itemService;
-        this.bountyHuntersService = bountyHuntersService;
     }
 
     @Override
