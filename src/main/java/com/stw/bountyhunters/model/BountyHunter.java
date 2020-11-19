@@ -1,12 +1,34 @@
 package com.stw.bountyhunters.model;
 
 import com.stw.bountyhunters.model.enums.BountyHunterType;
+import lombok.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
+
+@Data
+@Entity
 public class BountyHunter extends BaseEntity {
 
+    @Builder
+    public BountyHunter(Long id, String name, String login, String password, String email, Long power, BountyHunterType type,
+                        Double factor, Long money, Byte[] image, Set<Item> ownedItems, Set<Item> usedItems) {
+        super(id, name);
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.power = power;
+        this.type = type;
+        this.factor = factor;
+        this.money = money;
+        this.image = image;
+        this.ownedItems = ownedItems;
+        this.usedItems = usedItems;
+    }
 
     private String login;
     private String password;
@@ -16,89 +38,14 @@ public class BountyHunter extends BaseEntity {
     private Double factor;
     private Long money;
     private Byte[] image;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
     private Set<Item> ownedItems = new HashSet<>();
-    private Set<Item> usedItems;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
+    private Set<Item> usedItems = new HashSet<>();
 
     public BountyHunter() {
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Long getPower() {
-        return power;
-    }
-
-    public void setPower(Long power) {
-        this.power = power;
-    }
-
-    public BountyHunterType getType() {
-        return type;
-    }
-
-    public void setType(BountyHunterType type) {
-        this.type = type;
-    }
-
-    public Double getFactor() {
-        return factor;
-    }
-
-    public void setFactor(Double factor) {
-        this.factor = factor;
-    }
-
-    public Long getMoney() {
-        return money;
-    }
-
-    public void setMoney(Long money) {
-        this.money = money;
-    }
-
-    public Byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(Byte[] image) {
-        this.image = image;
-    }
-
-    public Set<Item> getOwnedItems() {
-        return ownedItems;
-    }
-
-    public void setOwnedItems(Set<Item> ownedItems) {
-        this.ownedItems = ownedItems;
-    }
-
-    public Set<Item> getUsedItems() {
-        return usedItems;
-    }
-
-    public void setUsedItems(Set<Item> usedItems) {
-        this.usedItems = usedItems;
-    }
 }

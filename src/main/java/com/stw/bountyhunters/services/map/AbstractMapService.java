@@ -1,7 +1,6 @@
-package com.stw.bountyhunters.map;
+package com.stw.bountyhunters.services.map;
 
 import com.stw.bountyhunters.model.BaseEntity;
-import com.stw.bountyhunters.model.BountyHunter;
 
 import java.util.*;
 

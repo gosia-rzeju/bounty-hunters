@@ -1,32 +1,33 @@
-package com.stw.bountyhunters.map;
+package com.stw.bountyhunters.services.map;
 
-import com.stw.bountyhunters.model.Target;
-import com.stw.bountyhunters.model.enums.TargetType;
-import com.stw.bountyhunters.services.TargetService;
+import com.stw.bountyhunters.model.Item;
+import com.stw.bountyhunters.model.enums.ItemType;
+import com.stw.bountyhunters.services.ItemService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class TargetServiceMap extends  AbstractMapService<Target, Long> implements TargetService {
+public class ItemServiceMap extends AbstractMapService <Item, Long> implements ItemService {
+
     @Override
-    public Set<Target> findAll() {
+    public Set<Item> findAll() {
         return super.findAll();
     }
 
     @Override
-    public Target findById(Long id) {
+    public Item findById(Long id) {
         return super.findById(id);
     }
 
     @Override
-    public Target save(Target object) {
+    public Item save(Item object) {
         return super.save(object);
     }
 
     @Override
-    public void delete(Target object) {
+    public void delete(Item object) {
         super.delete(object);
     }
 
@@ -36,7 +37,7 @@ public class TargetServiceMap extends  AbstractMapService<Target, Long> implemen
     }
 
     @Override
-    public Set<Target> getByType(TargetType type) {
+    public Set<Item> getByType(ItemType type) {
         return map.values().stream().filter(value -> value.getType().equals(type)).collect(Collectors.toSet());
     }
 }

@@ -1,15 +1,24 @@
 package com.stw.bountyhunters.controllers;
 
 import com.stw.bountyhunters.model.BountyHunter;
+import com.stw.bountyhunters.model.Item;
+import com.stw.bountyhunters.services.BountyHuntersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class BountyHunterController {
+
+    BountyHuntersService bountyHuntersService;
+
+    public BountyHunterController(BountyHuntersService bountyHuntersService) {
+        this.bountyHuntersService = bountyHuntersService;
+    }
 
     @RequestMapping({"/bountyhunters", "/bountyhunters/index", "/bountyhunters/index.html"})
     public String getBountyHunters(Model model) {
@@ -31,7 +40,31 @@ public class BountyHunterController {
         bountyHunters.add(bountyHunter1);
         bountyHunters.add(bountyHunter2);
 
-        model.addAttribute("hunters", bountyHunters);
+        Item steelHelmet = new Item();
+        steelHelmet.setName("Steel Helmet");
+        steelHelmet.setPower(100L);
+        steelHelmet.setFactorBenefit(1.2);
+        steelHelmet.setBuyPrice(150L);
+        steelHelmet.setSellPrice(120L);
+
+        Item mandalorianMask = new Item();
+        mandalorianMask.setName("Mandalorian Mask");
+        mandalorianMask.setPower(75L);
+        mandalorianMask.setFactorBenefit(1.4);
+        mandalorianMask.setBuyPrice(220L);
+        mandalorianMask.setSellPrice(185L);
+
+        bountyHunter1.getUsedItems().add(steelHelmet);
+
+        bountyHunter1.getUsedItems().add(mandalorianMask);
+
+
+        bountyHuntersService.save(bountyHunter1);
+        bountyHuntersService.save(bountyHunter2);
+
+        Set<BountyHunter> hunters = bountyHuntersService.findAll();
+
+        model.addAttribute("hunters", hunters);
 
         return "bountyhunters/index";
     }

@@ -1,4 +1,4 @@
-package com.stw.bountyhunters.controllers;
+package com.stw.bountyhunters;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;

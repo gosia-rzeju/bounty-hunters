@@ -1,14 +1,16 @@
-package com.stw.bountyhunters.map;
+package com.stw.bountyhunters.services.map;
 
 import com.stw.bountyhunters.model.BountyHunter;
 import com.stw.bountyhunters.model.Item;
 import com.stw.bountyhunters.services.BountyHuntersService;
 import com.stw.bountyhunters.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Profile({"default", "map"})
 @Service
 public class BountyHunterServiceMap extends AbstractMapService<BountyHunter, Long> implements BountyHuntersService {
 
@@ -32,19 +34,30 @@ public class BountyHunterServiceMap extends AbstractMapService<BountyHunter, Lon
     @Override
     public BountyHunter save(BountyHunter object) {
 
-        if(object != null) {
-            if(object.getOwnedItems() != null) {
-               object.getOwnedItems().forEach(item -> {
-                   if(item.getId() == null) {
-                      Item savedItem =  itemService.save(item);
-                      item.setId(savedItem.getId());
-                   }
-               });
+        if (object != null) {
+            if (object.getOwnedItems() != null) {
+                object.getOwnedItems().forEach(item -> {
+                    if (item.getId() == null) {
+                        Item savedItem = itemService.save(item);
+                        item.setId(savedItem.getId());
+                    }
+                });
             } else {
                 throw new RuntimeException("Set if owned item must be initialized");
             }
         } else {
             throw new RuntimeException("Bounty Hunter is null");
+        }
+
+        if (object.getUsedItems() != null) {
+            object.getUsedItems().forEach(item -> {
+                if (item.getId() == null) {
+                    Item savedItem = itemService.save(item);
+                    item.setId(savedItem.getId());
+                }
+            });
+        } else {
+            throw new RuntimeException("Set if owned item must be initialized");
         }
 
         return super.save(object);

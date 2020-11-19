@@ -11,12 +11,14 @@
 <table>
     <thead>
     <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Power</th>
         <th>Bounty</th>
     </tr>
     </thead>
     <tr th:each="target:${targetsList}">
+        <td th:text="${target.id}"></td>
         <td th:text="${target.name}"></td>
         <td th:text="${target.power}"></td>
         <td th:text="${target.bounty}"></td>

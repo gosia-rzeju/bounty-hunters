@@ -1,58 +1,44 @@
 package com.stw.bountyhunters.model;
 
 import com.stw.bountyhunters.model.enums.TargetType;
+import lombok.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
 import java.util.Set;
 
+
+@Data
+@Builder
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(exclude = {"bountyItem", "image"})
 public class Target extends BaseEntity {
 
     private Long power;
     private Long bounty;
     private TargetType type;
-    private Set<Item> bountyItem;
-    private Byte[] image;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "target")
+    private Set<Item> bountyItem = new HashSet<>();
 
-    public Target() {
-    }
+    private Byte[] image = new Byte[100000];
 
-    public Long getPower() {
-        return power;
-    }
-
-    public void setPower(Long power) {
+    @Builder
+    public Target(Long id, String name, Long power, Long bounty, TargetType type, Set<Item> bountyItem, Byte[] image) {
+        super(id, name);
         this.power = power;
-    }
-
-    public Long getBounty() {
-        return bounty;
-    }
-
-    public void setBounty(Long bounty) {
         this.bounty = bounty;
-    }
-
-    public TargetType getType() {
-        return type;
-    }
-
-    public void setType(TargetType type) {
         this.type = type;
-    }
-
-    public Set<Item> getBountyItem() {
-        return bountyItem;
-    }
-
-    public void setBountyItem(Set<Item> bountyItem) {
         this.bountyItem = bountyItem;
-    }
-
-    public Byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(Byte[] image) {
         this.image = image;
     }
+
+
+
+
+
 }

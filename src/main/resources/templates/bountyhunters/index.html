@@ -11,17 +11,21 @@
 <table>
     <thead>
     <tr>
+        <th>ID</th>
         <th>Login</th>
         <th>Email</th>
         <th>Power</th>
         <th>Money</th>
+        <th>Item</th>
     </tr>
     </thead>
     <tr th:each="hunter:${hunters}">
+        <td th:text="${hunter.id}">1</td>
         <td th:text="${hunter.login}">Login</td>
         <td th:text="${hunter.email}">login@gmail.com</td>
         <td th:text="${hunter.power}">999</td>
         <td th:text="${hunter.money}">171717</td>
+        <td th:each="item:${hunter.usedItems}" th:text="${item.id}"></td>
     </tr>
 </table>
 
