@@ -3,11 +3,13 @@ package com.stw.bountyhunters.services.map;
 import com.stw.bountyhunters.model.Target;
 import com.stw.bountyhunters.model.enums.TargetType;
 import com.stw.bountyhunters.services.TargetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Profile({"default", "map"})
 @Service
 public class TargetServiceMap extends  AbstractMapService<Target, Long> implements TargetService {
     @Override
