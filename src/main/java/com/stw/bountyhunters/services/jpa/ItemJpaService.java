@@ -21,14 +21,15 @@ public class ItemJpaService implements ItemService {
     }
 
     @Override
-    public Set<Item> getByType(ItemType type) {
+    public Set<Item> findByType(ItemType type) {
+
         return itemRepository.findByType(type);
     }
 
     @Override
     public Set<Item> findAll() {
         Set<Item> items = new HashSet<>();
-        itemRepository.findAll().forEach(items::add);
+        itemRepository.findAll().iterator().forEachRemaining(items::add);
         return items;
     }
 
@@ -54,6 +55,6 @@ public class ItemJpaService implements ItemService {
 
     @Override
     public Item getByName(String name) {
-        return itemRepository.findByName(name);
+        return itemRepository.findByName(name).orElse(null);
     }
 }

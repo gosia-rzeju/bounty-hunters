@@ -28,7 +28,7 @@ public class TargetJpaService implements TargetService {
     @Override
     public Set<Target> findAll() {
         Set<Target> targets = new HashSet<>();
-        targetRepository.findAll().forEach(targets::add);
+        targetRepository.findAll().iterator().forEachRemaining(targets::add);
         return targets;
     }
 
@@ -54,6 +54,6 @@ public class TargetJpaService implements TargetService {
 
     @Override
     public Target getByName(String name) {
-        return targetRepository.findByName(name);
+        return targetRepository.findByName(name).orElse(null);
     }
 }

@@ -9,7 +9,20 @@ import javax.persistence.ManyToOne;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude = {"target", "type"})
 public class Item extends BaseEntity {
+
+    @Builder
+    public Item(Long id, String name, Long power, Double factorBenefit, ItemType type, Long buyPrice, Long sellPrice, BountyHunter bountyHunter, Target target) {
+        super(id, name);
+        this.power = power;
+        this.factorBenefit = factorBenefit;
+        this.type = type;
+        this.buyPrice = buyPrice;
+        this.sellPrice = sellPrice;
+        this.bountyHunter = bountyHunter;
+        this.target = target;
+    }
 
     private Long power;
     private Double factorBenefit;

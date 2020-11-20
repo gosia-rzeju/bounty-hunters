@@ -7,5 +7,5 @@ import java.util.Set;
 
 public interface ItemService extends CrudService<Item, Long> {
 
-    Set<Item> getByType(ItemType type);
+    Set<Item> findByType(ItemType type);
 }

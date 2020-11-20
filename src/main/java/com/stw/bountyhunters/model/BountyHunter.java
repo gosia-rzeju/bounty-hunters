@@ -12,6 +12,9 @@ import java.util.Set;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(exclude = {"ownedItems", "usedItems", "type", "image"}, callSuper = true)
 public class BountyHunter extends BaseEntity {
 
     @Builder
@@ -45,7 +48,16 @@ public class BountyHunter extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
     private Set<Item> usedItems = new HashSet<>();
 
-    public BountyHunter() {
+    public BountyHunter addOwnedItem(Item item) {
+        item.setBountyHunter(this);
+        this.getOwnedItems().add(item);
+        return this;
+    }
+
+    public BountyHunter addUsedItem(Item item) {
+        item.setBountyHunter(this);
+        this.getUsedItems().add(item);
+        return this;
     }
 
 }

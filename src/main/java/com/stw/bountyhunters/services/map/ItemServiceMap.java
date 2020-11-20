@@ -39,7 +39,7 @@ public class ItemServiceMap extends AbstractMapService <Item, Long> implements I
     }
 
     @Override
-    public Set<Item> getByType(ItemType type) {
+    public Set<Item> findByType(ItemType type) {
         return map.values().stream().filter(value -> value.getType().equals(type)).collect(Collectors.toSet());
     }
 }

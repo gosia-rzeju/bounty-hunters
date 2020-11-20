@@ -37,6 +37,12 @@ public class Target extends BaseEntity {
         this.image = image;
     }
 
+    public Target addBountyItem(Item item) {
+        item.setTarget(this);
+        this.getBountyItem().add(item);
+        return this;
+    }
+
 
 
 

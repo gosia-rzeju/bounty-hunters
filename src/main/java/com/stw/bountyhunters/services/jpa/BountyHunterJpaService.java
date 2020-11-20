@@ -21,12 +21,13 @@ public class BountyHunterJpaService implements BountyHuntersService {
 
     @Override
     public BountyHunter getByLogin(String login) {
-        return bountyHunterRepository.findByLogin(login);
+
+        return bountyHunterRepository.findByLogin(login).orElse(null);
     }
 
     @Override
     public Set<BountyHunter> findAll() {
-        Set<BountyHunter> hunters = new HashSet<>();
+        Set<BountyHunter> hunters= new HashSet<>();
         bountyHunterRepository.findAll().forEach(hunters::add);
         return hunters;
     }
@@ -53,6 +54,6 @@ public class BountyHunterJpaService implements BountyHuntersService {
 
     @Override
     public BountyHunter getByName(String name) {
-        return bountyHunterRepository.findByName(name);
+        return bountyHunterRepository.findByName(name).orElse(null);
     }
 }
