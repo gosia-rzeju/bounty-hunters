@@ -2,6 +2,7 @@ package com.stw.bountyhunters.bootstrap;
 
 import com.stw.bountyhunters.model.BountyHunter;
 import com.stw.bountyhunters.model.Item;
+import com.stw.bountyhunters.model.enums.ItemType;
 import com.stw.bountyhunters.repositories.BountyHunterRepository;
 import com.stw.bountyhunters.repositories.ItemRepository;
 import com.stw.bountyhunters.repositories.TargetRepository;
@@ -16,7 +17,6 @@ import java.util.HashSet;
 import java.util.List;
 
 @Component
-@Profile("jpa")
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     private final BountyHunterRepository bountyHunterRepository;
@@ -37,20 +37,17 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     public void loadData() {
 
         BountyHunter hunter1 = BountyHunter.builder().name("Rzeju").login("Rzeju").password("pass").email("pandrzejak93@gmail.com").power(12345L).factor(1.4).money(98765L).build();
-        BountyHunter hunter2 = BountyHunter.builder().name("Rzeju").login("Rzeju").password("pass").email("pandrzejak93@gmail.com").power(12345L).factor(1.4).money(98765L).build();
+        BountyHunter hunter2 = BountyHunter.builder().name("Gosia").login("Gosia").password("pass123").email("pandrzejak93@gmail.com").power(12345L).factor(1.4).money(98765L).build();
 
-        Item item1 =  Item.builder().name("Item1").power(4567L).factorBenefit(1.3).buyPrice(1234L).sellPrice(34567L).build();
+        Item item1 =  Item.builder().name("Item1").power(4567L).factorBenefit(1.3).buyPrice(1234L).sellPrice(34567L).type(ItemType.ITEM_TYPE).build();
 
         hunter1.addOwnedItem(item1);
         hunter2.addOwnedItem(item1);
         hunter1.addUsedItem(item1);
         hunter2.addUsedItem(item1);
 
-        List<BountyHunter> hunters = new ArrayList<>();
 
-        hunters.add(hunter1);
-        hunters.add(hunter2);
-
-        bountyHunterRepository.saveAll(hunters);
+        bountyHunterRepository.save(hunter1);
+        bountyHunterRepository.save(hunter2);
     }
 }

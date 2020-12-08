@@ -4,12 +4,15 @@ import com.stw.bountyhunters.model.enums.ItemType;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
-@EqualsAndHashCode(exclude = {"target", "type"})
 public class Item extends BaseEntity {
 
     @Builder
@@ -26,7 +29,10 @@ public class Item extends BaseEntity {
 
     private Long power;
     private Double factorBenefit;
+
+    @Enumerated(EnumType.STRING)
     private ItemType type;
+
     private Long buyPrice;
     private Long sellPrice;
 
@@ -35,8 +41,4 @@ public class Item extends BaseEntity {
 
     @ManyToOne
     private Target target;
-
-    public Item() {
-    }
-
 }

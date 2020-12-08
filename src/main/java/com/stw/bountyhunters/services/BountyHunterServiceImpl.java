@@ -1,4 +1,4 @@
-package com.stw.bountyhunters.services.jpa;
+package com.stw.bountyhunters.services;
 
 import com.stw.bountyhunters.model.BountyHunter;
 import com.stw.bountyhunters.repositories.BountyHunterRepository;
@@ -9,13 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 
-@Profile("jpa")
 @Service
-public class BountyHunterJpaService implements BountyHuntersService {
+public class BountyHunterServiceImpl implements BountyHuntersService {
 
     private final BountyHunterRepository bountyHunterRepository;
 
-    public BountyHunterJpaService(BountyHunterRepository bountyHunterRepository) {
+    public BountyHunterServiceImpl(BountyHunterRepository bountyHunterRepository) {
         this.bountyHunterRepository = bountyHunterRepository;
     }
 

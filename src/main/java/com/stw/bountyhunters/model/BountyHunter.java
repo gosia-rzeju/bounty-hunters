@@ -3,18 +3,16 @@ package com.stw.bountyhunters.model;
 import com.stw.bountyhunters.model.enums.BountyHunterType;
 import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = {"ownedItems", "usedItems", "type", "image"}, callSuper = true)
 public class BountyHunter extends BaseEntity {
 
     @Builder
@@ -37,15 +35,18 @@ public class BountyHunter extends BaseEntity {
     private String password;
     private String email;
     private Long power;
+
+    @Enumerated(EnumType.STRING)
     private BountyHunterType type;
+
     private Double factor;
     private Long money;
     private Byte[] image;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter", fetch = FetchType.EAGER)
     private Set<Item> ownedItems = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter", fetch = FetchType.EAGER)
     private Set<Item> usedItems = new HashSet<>();
 
     public BountyHunter addOwnedItem(Item item) {

@@ -3,23 +3,22 @@ package com.stw.bountyhunters.model;
 import com.stw.bountyhunters.model.enums.TargetType;
 import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
-@Data
 @Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = {"bountyItem", "image"})
+@Getter
+@Setter
 public class Target extends BaseEntity {
 
     private Long power;
     private Long bounty;
+
+    @Enumerated(EnumType.STRING)
     private TargetType type;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "target")
