@@ -13,7 +13,7 @@ import java.util.Set;
 @Controller
 public class ItemController {
 
-    ItemService itemService;
+    private ItemService itemService;
 
     public ItemController(ItemService itemService) {
         this.itemService = itemService;

@@ -36,8 +36,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     public void loadData() {
 
-        BountyHunter hunter1 = BountyHunter.builder().name("Rzeju").login("Rzeju").password("pass").email("pandrzejak93@gmail.com").power(12345L).factor(1.4).money(98765L).ownedItems(new HashSet<>()).usedItems(new HashSet<>()).build();
-        BountyHunter hunter2 = BountyHunter.builder().name("Rzeju").login("Rzeju").password("pass").email("pandrzejak93@gmail.com").power(12345L).factor(1.4).money(98765L).ownedItems(new HashSet<>()).usedItems(new HashSet<>()).build();
+        BountyHunter hunter1 = BountyHunter.builder().name("Rzeju").login("Rzeju").password("pass").email("pandrzejak93@gmail.com").power(12345L).factor(1.4).money(98765L).build();
+        BountyHunter hunter2 = BountyHunter.builder().name("Rzeju").login("Rzeju").password("pass").email("pandrzejak93@gmail.com").power(12345L).factor(1.4).money(98765L).build();
 
         Item item1 =  Item.builder().name("Item1").power(4567L).factorBenefit(1.3).buyPrice(1234L).sellPrice(34567L).build();
 
@@ -52,9 +52,5 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         hunters.add(hunter2);
 
         bountyHunterRepository.saveAll(hunters);
-
     }
-
-
-
 }

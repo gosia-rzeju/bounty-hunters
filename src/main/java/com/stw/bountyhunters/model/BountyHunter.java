@@ -29,8 +29,8 @@ public class BountyHunter extends BaseEntity {
         this.factor = factor;
         this.money = money;
         this.image = image;
-        this.ownedItems = ownedItems;
-        this.usedItems = usedItems;
+        this.ownedItems = new HashSet<>();
+        this.usedItems = new HashSet<>();
     }
 
     private String login;
