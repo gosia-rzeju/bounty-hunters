@@ -1,9 +1,9 @@
-package com.stw.bountyhunters;
+package com.stw.bountyhunters.exercises;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main {
+public class HashMapEx {
 
     public static void main(String[] args) {
 

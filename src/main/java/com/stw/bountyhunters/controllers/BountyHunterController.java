@@ -1,14 +1,18 @@
 package com.stw.bountyhunters.controllers;
 
+import com.stw.bountyhunters.commands.BountyHunterCommand;
 import com.stw.bountyhunters.model.BountyHunter;
 import com.stw.bountyhunters.model.Item;
 import com.stw.bountyhunters.services.BountyHuntersService;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -42,8 +46,24 @@ public class BountyHunterController {
 
         BountyHunter savedHunter = bountyHuntersService.save(hunter);
 
-        model.addAttribute("hunter", savedHunter);
+        Set<BountyHunter> hunters = new HashSet<>();
+        hunters.add(savedHunter);
+
+        model.addAttribute("hunters", hunters);
 
         return "bountyhunters/index";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = {"/getjson/{id}"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public BountyHunterCommand getJsonResponse(@PathVariable("id") Long id) {
+        BountyHunter hunter = bountyHuntersService.findById(id);
+
+        BountyHunterCommand response = new BountyHunterCommand();
+        response.setId(hunter.getId());
+        response.setName(hunter.getName());
+        response.setPower(hunter.getPower());
+
+        return response;
     }
 }
