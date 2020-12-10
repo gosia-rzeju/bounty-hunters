@@ -7,9 +7,7 @@ import com.stw.bountyhunters.services.BountyHuntersService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,6 +31,32 @@ public class BountyHunterController {
         model.addAttribute("hunters", hunters);
 
         return "bountyhunters/index";
+    }
+
+    @RequestMapping("/bountyhunter/show/{id}")
+    public String getBountyHunterById(@PathVariable("id") Long id, Model model) {
+
+        BountyHunter hunter = bountyHuntersService.findById(id);
+
+        model.addAttribute("hunter", hunter);
+
+        return "bountyhunter/show";
+    }
+
+    @RequestMapping("bountyhunter/new")
+    public String newBountyHunter(Model model) {
+        model.addAttribute("huntercommand", new BountyHunterCommand());
+
+        return "bountyhunter/bountyhunterform";
+    }
+
+    @PostMapping
+    @RequestMapping("bountyhunter")
+    public String saveOrUpdate(@ModelAttribute BountyHunterCommand command) {
+
+        BountyHunterCommand savedCommand = bountyHuntersService.saveBountyHunterCommand(command);
+
+        return "redirect:bountyhunter/show/" + savedCommand.getId();
     }
 
     @RequestMapping({"/bountyhunter/create/{id}/{name}/{power}"})

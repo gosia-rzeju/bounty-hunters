@@ -43,10 +43,10 @@ public class BountyHunter extends BaseEntity {
     private Long money;
     private Byte[] image;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
     private Set<Item> ownedItems = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
     private Set<Item> usedItems = new HashSet<>();
 
     public BountyHunter addOwnedItem(Item item) {
